@@ -8,8 +8,9 @@ const Load = {
 
       let title
       let thumb
+      let type
       let tag
-      let author
+      let chapter
       let time
       let href
       let desc
@@ -21,16 +22,21 @@ const Load = {
       element.find('.animposx').each((i, e) => {
         title = $(e).find('.bigor a div h4').text()
         img = $(e).find('a div img').attr('src')
-        // thumb = img.replace('360', '480').replace('180', '280')
-        // href = $(e).find('.jeg_thumb a').attr('href').split('/')
-        // endpoint = href[3]
-        // time = $()
-        //   .find('.jeg_postblock_content .jeg_post_meta .jeg_meta_date a')
-        //   .text()
+        thumb = img.replace('146', '346').replace('208', '508')
+        type = $(e).find('a div span').attr('class').split(' ')
+        tag = type[1]
+        chapter = $(e).find('.bigor div div a').text()
+        time = $(e).find('.bigor div div span').text()
+        href = $(e).find('a').attr('href').split('/')
+        endpoint = href[4]
 
         media.push({
           title,
-          img,
+          thumb,
+          tag,
+          chapter,
+          time,
+          endpoint,
         })
       })
 

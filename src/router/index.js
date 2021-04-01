@@ -1,9 +1,9 @@
 import express from 'express'
 
-import latestComic from '../controller/latest'
+import comic from '../controller/comic'
 
 const router = express.Router()
 
-router.get('/', latestComic.getLatest)
+router.get('/latest', comic.getLatest)
 
 export default router
