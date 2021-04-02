@@ -174,6 +174,49 @@ const Load = {
       return error
     }
   },
+  manhua: async (req, res, response) => {
+    try {
+      const $ = cheerio.load(response.data)
+      const element = $('.listupd')
+
+      let title
+      let thumb
+      let type
+      let tag
+
+      let score
+      let href
+
+      let endpoint
+      let img
+
+      let media = []
+
+      element.find('.animposx').each((i, e) => {
+        title = $(e).find('a .bigors .tt ').text()
+        img = $(e).find('a div img').attr('src')
+        thumb = img.replace('146', '346').replace('201', '508')
+        type = $(e).find('a div .typeflag').attr('class').split(' ')
+        tag = type[1]
+
+        score = $(e).find('.bigors div div i').text()
+        href = $(e).find('a').attr('href').split('/')
+        endpoint = href[4]
+
+        media.push({
+          title,
+          thumb,
+          tag,
+          score,
+          endpoint,
+        })
+      })
+
+      return res.send(media)
+    } catch (error) {
+      return error
+    }
+  },
 }
 
 export default Load
