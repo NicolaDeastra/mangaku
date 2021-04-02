@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const fetchService = async (url, res) => {
   try {
-    const response = await axios.get(url)
+    const response = await axios.get(encodeURI(url))
 
     return await response
   } catch (error) {
