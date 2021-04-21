@@ -42,6 +42,16 @@ const gameController = {
       return error
     }
   },
+  getDetail: async (req, res) => {
+    const { endpoint } = req.params
+
+    try {
+      const response = await fetchService(`${baseUrl}/komik/${endpoint}`, res)
+      return Load.detail(req, res, response)
+    } catch (error) {
+      return error
+    }
+  },
 
   getSearch: async (req, res) => {
     const { page = 1, s } = req.query
