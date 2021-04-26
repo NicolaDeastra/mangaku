@@ -8,6 +8,13 @@ axiosCookieJarSupport(axios)
 
 const cookieJar = new tough.CookieJar()
 
+const tunnelAgent = tunnel.httpsOverHttp({
+  proxy: {
+    host: '103.106.219.121',
+    port: 8080,
+  },
+})
+
 const fetchService = async (url, res) => {
   try {
     const response = await axios.get(url, {
