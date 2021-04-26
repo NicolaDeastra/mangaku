@@ -1,6 +1,37 @@
 import cheerio from 'cheerio'
 
 const Load = {
+  new: async (req, res, response) => {
+    try {
+      const $ = cheerio.load(response.data)
+      const element = $('.listupd')
+
+      let title
+      let thumb
+      let type
+      let tag
+      let chapter
+      let time
+      let href
+
+      let endpoint
+      let img
+
+      let media = []
+
+      element.find('.bs').each((i, e) => {
+        title = $(e).find('.bsx a ').attr('title')
+
+        media.push({
+          title,
+        })
+      })
+
+      return res.send(media)
+    } catch (error) {
+      return error
+    }
+  },
   articles: async (req, res, response) => {
     try {
       const $ = cheerio.load(response.data)

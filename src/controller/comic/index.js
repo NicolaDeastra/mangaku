@@ -8,10 +8,10 @@ const gameController = {
 
     try {
       const response = await fetchService(
-        `${baseUrl}/komik-terbaru/page/${page}`,
+        `${baseUrl}/manga/?page=${page}&order=update`,
         res,
       )
-      return Load.articles(req, res, response)
+      return Load.new(req, res, response)
     } catch (error) {
       return error
     }

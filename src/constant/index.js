@@ -1,3 +1,3 @@
-const baseUrl = 'https://komikindo.id'
+const baseUrl = 'https://www.komikstation.com/'
 
 export default baseUrl
