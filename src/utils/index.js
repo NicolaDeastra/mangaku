@@ -7,11 +7,11 @@ const Load = {
       const element = $('.listupd')
 
       let title
-      let thumb
+      let score
       let type
       let tag
       let chapter
-      let time
+
       let href
 
       let endpoint
@@ -21,9 +21,20 @@ const Load = {
 
       element.find('.bs').each((i, e) => {
         title = $(e).find('.bsx a ').attr('title')
+        img = $(e).find('.bsx a .limit img').attr('src')
+        type = $(e).find('.bsx a .limit span').text() || null
+        chapter = $(e).find('.bsx a .bigor .adds .epxs').text()
+        score = $(e).find('.bsx a .bigor .adds .rating i').text()
+        href = $(e).find('a').attr('href').split('/')
+        endpoint = href[4]
 
         media.push({
           title,
+          img,
+          chapter,
+          score,
+          type,
+          endpoint,
         })
       })
 
