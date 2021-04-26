@@ -11,33 +11,7 @@ const gameController = {
         `${baseUrl}/manga/?page=${page}&order=update`,
         res,
       )
-      return Load.new(req, res, response)
-    } catch (error) {
-      return error
-    }
-  },
-  getPopular: async (req, res) => {
-    const { page = 1 } = req.query
-
-    try {
-      const response = await fetchService(
-        `${baseUrl}/komik-populer/page/${page}`,
-        res,
-      )
-      return Load.popular(req, res, response)
-    } catch (error) {
-      return error
-    }
-  },
-  getColor: async (req, res) => {
-    const { page = 1 } = req.query
-
-    try {
-      const response = await fetchService(
-        `${baseUrl}/komik-berwarna/page/${page}`,
-        res,
-      )
-      return Load.color(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -61,7 +35,7 @@ const gameController = {
         `${baseUrl}/page/${page}/?s=${s}`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -71,8 +45,11 @@ const gameController = {
     const { page = 1 } = req.query
 
     try {
-      const response = await fetchService(`${baseUrl}/manga/page/${page}`, res)
-      return Load.manhua(req, res, response)
+      const response = await fetchService(
+        `${baseUrl}/manga/?page=${page}&order=update&type=Manga`,
+        res,
+      )
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -82,8 +59,11 @@ const gameController = {
     const { page = 1 } = req.query
 
     try {
-      const response = await fetchService(`${baseUrl}/manhua/page/${page}`, res)
-      return Load.manhua(req, res, response)
+      const response = await fetchService(
+        `${baseUrl}/manga/?page=${page}&order=update&type=Manhua`,
+        res,
+      )
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -93,8 +73,11 @@ const gameController = {
     const { page = 1 } = req.query
 
     try {
-      const response = await fetchService(`${baseUrl}/manhwa/page/${page}`, res)
-      return Load.manhua(req, res, response)
+      const response = await fetchService(
+        `${baseUrl}/manga/?page=${page}&order=update&type=Manhwa`,
+        res,
+      )
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -108,7 +91,7 @@ const gameController = {
         `${baseUrl}/genres/action/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -121,7 +104,7 @@ const gameController = {
         `${baseUrl}/genres/adventure/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -134,7 +117,7 @@ const gameController = {
         `${baseUrl}/genres/comedy/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -148,7 +131,7 @@ const gameController = {
         `${baseUrl}/genres/drama/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -162,7 +145,7 @@ const gameController = {
         `${baseUrl}/genres/fantasy/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -176,7 +159,7 @@ const gameController = {
         `${baseUrl}/genres/isekai/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -190,7 +173,7 @@ const gameController = {
         `${baseUrl}/genres/slice-of-life/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -204,7 +187,7 @@ const gameController = {
         `${baseUrl}/genres/romance/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -218,7 +201,7 @@ const gameController = {
         `${baseUrl}/genres/yuri/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -232,7 +215,7 @@ const gameController = {
         `${baseUrl}/genres/mystery/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -246,7 +229,7 @@ const gameController = {
         `${baseUrl}/genres/psychological/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }
@@ -260,7 +243,7 @@ const gameController = {
         `${baseUrl}/genres/sci-fi/page/${page}/`,
         res,
       )
-      return Load.genre(req, res, response)
+      return Load.article(req, res, response)
     } catch (error) {
       return error
     }

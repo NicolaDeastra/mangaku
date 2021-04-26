@@ -5,8 +5,6 @@ import comic from '../controller/comic'
 const router = express.Router()
 
 router.get('/latest', comic.getLatest)
-router.get('/popular', comic.getPopular)
-router.get('/color', comic.getColor)
 router.get('/detail/:endpoint', comic.getDetail)
 
 router.get('/search', comic.getSearch)
