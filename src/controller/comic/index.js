@@ -16,11 +16,21 @@ const gameController = {
       return error
     }
   },
+  getChapter: async (req, res) => {
+    const { endpoint } = req.params
+
+    try {
+      const response = await fetchService(`${baseUrl}/${endpoint}/`, res)
+      return Load.read(req, res, response)
+    } catch (error) {
+      return error
+    }
+  },
   getDetail: async (req, res) => {
     const { endpoint } = req.params
 
     try {
-      const response = await fetchService(`${baseUrl}/komik/${endpoint}`, res)
+      const response = await fetchService(`${baseUrl}/manga/${endpoint}/`, res)
       return Load.detail(req, res, response)
     } catch (error) {
       return error

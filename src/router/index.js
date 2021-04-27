@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.get('/latest', comic.getLatest)
 router.get('/detail/:endpoint', comic.getDetail)
+router.get('/read/:endpoint', comic.getChapter)
 
 router.get('/search', comic.getSearch)
 
